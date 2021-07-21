@@ -4,11 +4,22 @@ import { useState, useEffect } from 'react';
 import '../styles/Timer.scss';
 import { setTimeout } from 'timers';
 
+import timer from '../assets/audio/timer.mp3';
+
 export function Timer() {
     const [quantity, setQuantity] = useState(0)
-    const [time, setTime] = useState(25 * 60)
-
     const [value, setValue] = useState([true, false, false])
+    const [isActive, setIsActive] = useState(false)
+    const [stateButton, setStateButton] = useState('Iniciar')
+    const [hasClicked, setHasClicked] = useState(false)
+
+    const [time, setTime] = useState(25 * 60)
+    const minutes = Math.floor(time / 60)
+    const seconds = time % 60
+    const [minutesLeft, minutesRight] = String(minutes).padStart(2, '0').split('')
+    const [secondsLeft, secondsRight] = String(seconds).padStart(2, '0').split('')
+
+
     function toggleEnableButton( value: number ) {
         //seleciona qual botão de menu está ativado e adiciona os timers de cada um.
         switch (value) {
@@ -32,16 +43,6 @@ export function Timer() {
         }
     }
 
-    const [isActive, setIsActive] = useState(false)
-
-    const minutes = Math.floor(time / 60)
-    const seconds = time % 60
-
-    const [minutesLeft, minutesRight] = String(minutes).padStart(2, '0').split('')
-    const [secondsLeft, secondsRight] = String(seconds).padStart(2, '0').split('')
-
-    const [stateButton, setStateButton] = useState('Iniciar')
-    const [hasClicked, setHasClicked] = useState(false)
     function handleClick() {
         //qunado o clique do botão está ativado.
         if (hasClicked === false) {
@@ -71,8 +72,10 @@ export function Timer() {
             }, 1000)       
         }
 
-        else if (isActive && time === 0) {
-            new Audio('/audio/public_notification.mp3').play()
+        else if (isActive && time === 0) {     
+            //dispara um áudio e notificação quando o tempo chega à zero.
+            const audio: any = document.getElementById('audio')
+            audio.play()
             new Notification("Vamos lá!")
 
             if (quantity < 4) {
@@ -134,6 +137,10 @@ export function Timer() {
                 
             </div>
             <Button className="start-button" onClick={ () => { handleClick() } } clicked={ hasClicked.toString() }>{ stateButton }</Button>
+
+            <audio controls id="audio">
+                <source src={ timer } type="audio/mp3"/>
+            </audio>
         </main>
     )
 }
