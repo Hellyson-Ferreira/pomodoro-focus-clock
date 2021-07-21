@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pomodoro-focus-clock/static/css/main.af50f3a8.chunk.css",
-    "main.js": "/pomodoro-focus-clock/static/js/main.ce930013.chunk.js",
-    "main.js.map": "/pomodoro-focus-clock/static/js/main.ce930013.chunk.js.map",
+    "main.js": "/pomodoro-focus-clock/static/js/main.d9eab7fb.chunk.js",
+    "main.js.map": "/pomodoro-focus-clock/static/js/main.d9eab7fb.chunk.js.map",
     "runtime-main.js": "/pomodoro-focus-clock/static/js/runtime-main.07e50cd7.js",
     "runtime-main.js.map": "/pomodoro-focus-clock/static/js/runtime-main.07e50cd7.js.map",
     "static/js/2.8d61c6c8.chunk.js": "/pomodoro-focus-clock/static/js/2.8d61c6c8.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.07e50cd7.js",
     "static/js/2.8d61c6c8.chunk.js",
     "static/css/main.af50f3a8.chunk.css",
-    "static/js/main.ce930013.chunk.js"
+    "static/js/main.d9eab7fb.chunk.js"
   ]
 }

@@ -6,7 +6,7 @@ import { setTimeout } from 'timers';
 
 export function Timer() {
     const [quantity, setQuantity] = useState(0)
-    const [time, setTime] = useState(3 * 60)
+    const [time, setTime] = useState(25 * 60)
 
     const [value, setValue] = useState([true, false, false])
     function toggleEnableButton( value: number ) {
@@ -15,7 +15,7 @@ export function Timer() {
             case 0:
                 setValue([true, false, false])
 
-                setTime(3 * 60)
+                setTime(25 * 60)
                 break
 
             case 1: 
@@ -62,16 +62,17 @@ export function Timer() {
 
     useEffect( () => { 
         Notification.requestPermission()
-    })
+    }, [])
 
     useEffect( () => {
         if (isActive && time > 0) {
             setTimeout( () => {
                 setTime(time - 1)
-            }, 10)       
+            }, 1000)       
         }
 
         else if (isActive && time === 0) {
+            new Audio('/audio/public_notification.mp3').play()
             new Notification("Vamos lá!")
 
             if (quantity < 4) {
